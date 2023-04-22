@@ -1,21 +1,11 @@
-import { useEffect } from 'react';
 import './style/App.css';
-import WeatherService from './API/WeatherService';
-import { useFetching } from './hooks/useFetching';
+
+import { Weather } from './components/Weather';
 
 function App() {
-
-  // const [fetchWeatherByCountry, isLoading, error] = useFetching( async () => {
-  //   const response = await WeatherService.getWeather('USA');
-  //   console.log(response);
-  // });
-
-  // useEffect(() => {
-  //   fetchWeatherByCountry();
-  // }, []);
-
   return (
     <div className="App">
+      <Weather/>
     </div>
   );
 }
