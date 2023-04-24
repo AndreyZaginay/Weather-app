@@ -28,3 +28,19 @@
    background: cadetblue;
    rotate: 1deg;
 }
+
+.navbar {
+    height: 50px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 2fr;
+    padding: 0 10px;
+    background: lightgray;
+}
+
+.selected-data{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

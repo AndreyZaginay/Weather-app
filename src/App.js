@@ -1,10 +1,10 @@
 import './style/App.css';
 
-import  Countries  from './components/pages/Countries';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from "./components/AppRouter";
 import { useState } from 'react';
 import { StateContext } from './context/state.context';
+import Navbar from './components/UI/navbar/Navbar';
 function App() {
 
   const [selectedCountry, setSelectedCountry] = useState({});
@@ -17,8 +17,9 @@ function App() {
       selectedCity,
       setSelectedCity
     }}>
-       <div className="App">
+    <div className="App">
       <BrowserRouter>
+        <Navbar/>
         <AppRouter/>
       </BrowserRouter>
     </div>
