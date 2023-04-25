@@ -1,22 +1,29 @@
-import React, {useContext} from 'react'
-import { StateContext } from '../../context/state.context';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import WeatherService from '../../API/WeatherService';
+import { useFetching } from '../../hooks/useFetching';
 
- function Cities() {
+function Cities() {
+  const router = useNavigate();  
+  const params = useParams();
+  const [cities, setCities] = useState([]);
 
-  const router = useNavigate();
-  const {selectedCountry, setSelectedCity} = useContext(StateContext);
-  const selectCity = (city) => {
-    setSelectedCity(city);
-    router(`/country/:${ selectedCountry.country }/city/:${city}/weather`);
-  }
+  const [fetchCountryCities, isLoading, error] = useFetching( async () => {
+    const response = await WeatherService.getCountryCities(params.countryName.substring(1));
+    setCities(response.data.data);
+  });
+
+  useEffect(() => {
+    fetchCountryCities();
+  }, [])
+
   return (
-    <div>
-      {selectedCountry.cities.map((city, id) => 
-        <div 
+    <div className='city-conteiner'>
+      {cities.map((city, id) => 
+        <div
+          className='city' 
           key={id}
-          onClick={() => selectCity(city)}
         >
           {city}
         </div>

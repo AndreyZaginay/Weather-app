@@ -3,7 +3,12 @@ import axios from "axios";
 export default class WeatherService {
 
     static async getCountries() {
-        const response = await axios.get('https://countriesnow.space/api/v0.1/countries');
+        const response = await axios.get('https://countriesnow.space/api/v0.1/countries/capital');
+        return response;
+    }
+
+    static async getCountryCities(country) {
+        const response = await axios.post('https://countriesnow.space/api/v0.1/countries/cities', { country });
         return response;
     }
 
