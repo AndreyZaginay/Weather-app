@@ -21,20 +21,20 @@ const Countries = () => {
   }, []);
 
   return (
-    <div >
+    <div>
       {isLoading
         ? <Loader/>
         : <div className='country-conteiner'>
-          {countries.map((country, id) => 
-        <div 
-          key={id}
-          className='country'
-          onClick={() => router(`${ country.name }/city`)}
-        >
-          {country.name}    
-        </div>
-      )}
-        </div>
+            {countries.map((country, id) => 
+              <div 
+                key={id}
+                className='country'
+                onClick={() => router(`${ country.name }/city`)}
+              >
+                {country.name}    
+              </div>
+            )}
+          </div>
       }
     </div>
   )

@@ -24,7 +24,7 @@
     font-size: large;
 }
 
-.country:hover {
+.country:hover, .city:hover {
    background: cadetblue;
    rotate: 1deg;
 }
