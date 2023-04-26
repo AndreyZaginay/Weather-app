@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import WeatherService from '../../API/WeatherService';
 import { useFetching } from '../../hooks/useFetching';
+import Loader from '../UI/Loader/Loader';
 
 const Countries = () => {
 
@@ -11,7 +12,7 @@ const Countries = () => {
 
   const [fetchCountry, isLoading, error] = useFetching( async () => {
     const response = await WeatherService.getCountries();
-    console.log(response.data);
+
     setCountries(response.data.data);
   });
 
@@ -20,16 +21,21 @@ const Countries = () => {
   }, []);
 
   return (
-    <div className='country-conteiner'>
-      {countries.map((country, id) => 
+    <div >
+      {isLoading
+        ? <Loader/>
+        : <div className='country-conteiner'>
+          {countries.map((country, id) => 
         <div 
           key={id}
           className='country'
-          onClick={() => router(`/country/:${ country.name }/city`)}
+          onClick={() => router(`${ country.name }/city`)}
         >
           {country.name}    
         </div>
       )}
+        </div>
+      }
     </div>
   )
 }

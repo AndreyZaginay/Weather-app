@@ -10,12 +10,13 @@ function Cities() {
   const [cities, setCities] = useState([]);
 
   const [fetchCountryCities, isLoading, error] = useFetching( async () => {
-    const response = await WeatherService.getCountryCities(params.countryName.substring(1));
+    const response = await WeatherService.getCountryCities(params.countryName);
     setCities(response.data.data);
   });
 
   useEffect(() => {
     fetchCountryCities();
+    console.log(params);
   }, [])
 
   return (
@@ -24,6 +25,7 @@ function Cities() {
         <div
           className='city' 
           key={id}
+          onClick={() => router(`${city}/weather`)}
         >
           {city}
         </div>

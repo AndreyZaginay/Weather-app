@@ -1,16 +1,14 @@
 import React, {useContext} from 'react';
 
 import MyInput from '../input/MyInput'
-import { StateContext } from '../../../context/state.context';
 
 function Navbar() {
 
-  const {selectedCountry, selectedCity} = useContext(StateContext);
 
   return (
     <div className='navbar'>
         <MyInput></MyInput>
-        <div className='selected-data'>
+        {/* <div className='selected-data'>
             <span>
                 Selected country:&nbsp;&nbsp;
                 {selectedCountry
@@ -25,7 +23,7 @@ function Navbar() {
                     : 'City not selected'
                 }
             </span>
-        </div>
+        </div> */}
     </div>
   )
 }
