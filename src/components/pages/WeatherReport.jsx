@@ -22,7 +22,7 @@ function WeatherReport() {
   }, [])
 
   return (
-    <div>
+    <div className='height__100'>
         {error && 
         <h1>Error: ${error}</h1>
         }

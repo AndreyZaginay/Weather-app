@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+#root {
+    height: 100vh;
+}
+
+.App {
+    height: 100%;
+}
+
+.height__100{
+    height: calc(100% - 50px);
+}
+
 .country-conteiner, .city-conteiner{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -44,3 +56,17 @@
     grid-template-columns: 1fr 1fr;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+.weather {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.weather-container {
+    height: 500px;
+    width: 300px;
+}
+
