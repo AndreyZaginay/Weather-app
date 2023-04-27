@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { useLocations } from '../../hooks/useLocation';
 import { useFetching } from '../../hooks/useFetching';
 import LocationFilter from '../LocationFilter';
 import Loader from '../UI/Loader/Loader';
 import WeatherService from '../../API/WeatherService';
+import List from '../UI/List/List';
 
 function Cities() {
-  const router = useNavigate();  
   const params = useParams();
   const [cities, setCities] = useState([]);
   const [filter, setFilter] = useState({query: ''});
@@ -31,18 +31,10 @@ function Cities() {
       }
       {isLoading
         ? <div className='loader-container'><Loader/></div>
-        : <div className='city-list'>
+        : <div className='container'>
             <LocationFilter msg={'Enter city name'} filter={filter} setFilter={setFilter}/>
-            {sortedCities.map((city, id) => 
-              <div
-                className='city' 
-                key={id}
-                onClick={() => router(`${city}/weather`)}
-              >
-                {city}
-              </div>
-            )}
-          </div>
+            <List list={sortedCities} route={'/weather'}/>
+         </div>
       }
     </div>
   )

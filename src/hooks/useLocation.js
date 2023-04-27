@@ -6,7 +6,7 @@ export const useLocations = (locations, query) => {
             return locations;
         }
         return locations.filter(loc => loc.toLowerCase().includes(query.toLowerCase()))
-    }, [query]);
+    }, [query, locations]);
 
     return searchedLocations;
 }
