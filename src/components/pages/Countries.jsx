@@ -23,7 +23,7 @@ const Countries = () => {
   return (
     <div>
       {isLoading
-        ? <Loader/>
+        ? <div className='loader-container'><Loader/></div>
         : <div className='country-conteiner'>
             {countries.map((country, id) => 
               <div 

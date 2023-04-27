@@ -12,7 +12,7 @@ function WeatherReport() {
 
   const [fetchCityWeather, isLoading, error] = useFetching( async () => {
     const response = await WeatherService.getWeatherByCity(params.cityName);
-    setWeatherInfo(response.data.weather);
+    setWeatherInfo(response.data);
     console.log(response);
     
   });
@@ -22,13 +22,13 @@ function WeatherReport() {
   }, [])
 
   return (
-    <div className='height__100'>
+    <div className='weather-container'>
         {error && 
         <h1>Error: ${error}</h1>
         }
       {isLoading 
         ? <Loader/>
-        :  <Weather weather={ weatherInfo }/>
+        :  <Weather weatherInfo={ weatherInfo }/>
       }
     </div>
   )
