@@ -7,7 +7,6 @@ function Navbar() {
 
   return (
     <div className='navbar'>
-        <MyInput></MyInput>
         {/* <div className='selected-data'>
             <span>
                 Selected country:&nbsp;&nbsp;
