@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useLocations } from '../../hooks/useLocation';
-import { useFetching } from '../../hooks/useFetching';
+import { useFetching, useFetchingApiService } from '../../hooks/useFetching';
 import LocationFilter from '../LocationFilter';
 import Loader from '../UI/Loader/Loader';
 import WeatherService from '../../API/WeatherService';
 import List from '../UI/List/List';
+import { useServiceApi } from "../../hooks/useApiService";
+import { CountriesService } from "../../API/countires.service";
 
 function Cities() {
   const params = useParams();
@@ -14,15 +16,25 @@ function Cities() {
   const [filter, setFilter] = useState({query: ''});
   const sortedCities = useLocations(cities, filter.query);
 
-  const [fetchCountryCities, isLoading, error] = useFetching( async () => {
-    const response = await WeatherService.getCountryCities(params.countryName);
-    setCities(response.data.data);
-  });
+  // const [fetchCountryCities, isLoading, error] = useFetching( async () => {
+  //   const response = await WeatherService.getCountryCities(params.countryName);
+  //   setCities(response.data.data);
+  // });
+  //
+  // useEffect(() => {
+  //   fetchCountryCities();
+  //   console.log(params);
+  // }, [])
+
+  const [countriesService, abortController] = useServiceApi(CountriesService)
+  const [fetching, isLoading, error] = useFetchingApiService(countriesService.getCountryCities);
 
   useEffect(() => {
-    fetchCountryCities();
-    console.log(params);
-  }, [])
+    fetching(async (getCountryCities) => {
+      const response = await getCountryCities(params.countryName);
+      setCities(response.data);
+    });
+  }, []);
 
   return (
     <div>
