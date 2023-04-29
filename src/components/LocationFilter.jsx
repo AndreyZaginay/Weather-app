@@ -2,7 +2,7 @@ import React from 'react';
 
 import MyInput from './UI/input/MyInput';
 
-function LocationFilter({filter, setFilter, msg}) {
+const LocationFilter =({filter, setFilter, msg}) => {
   return (
     <div className='filter'>
         <span>

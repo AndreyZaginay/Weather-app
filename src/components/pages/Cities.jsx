@@ -42,7 +42,7 @@ function Cities() {
         <h1 style={{textAlign: 'center'}}>Error: ${error}</h1>
       }
       {isLoading
-        ? <div className='loader-container'><Loader/></div>
+        ? <Loader/>
         : <div className='container'>
             <LocationFilter msg={'Enter city name'} filter={filter} setFilter={setFilter}/>
             <List list={sortedCities} route={'/weather'}/>

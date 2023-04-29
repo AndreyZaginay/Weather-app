@@ -16,7 +16,7 @@ class HttpClient {
     }
 
     post(url, body, options = {}) {
-        return this.axiosInstance.post(url, body, options)
+        return this.axiosInstance.post(url, body, options);
     }
 }
 

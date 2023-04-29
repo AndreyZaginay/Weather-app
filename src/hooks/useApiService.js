@@ -16,3 +16,5 @@ export const useServiceApi = (ServiceApi) => {
 
     return [serviceMethods, abortControllerRef.current];
 }
+
+// {property: 'string'}  {getCountries: 'value'} {getCountriesCities: 'value'}

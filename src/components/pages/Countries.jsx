@@ -33,12 +33,15 @@ const Countries = () => {
           const response = await getCountries();
           setCountries(response.data.map(location => location.name));
       });
+    //   return () => {
+    //     abortController.abort();
+    //   }
     }, []);
 
     return (
         <div>
             {isLoading
-                ? <div className='loader-container'><Loader/></div>
+                ? <Loader/>
                 : <div className='container'>
                     <LocationFilter msg={'Enter country name'} filter={filter} setFilter={setFilter}/>
                     <List list={sortedCountries} route={'/city'}/>
