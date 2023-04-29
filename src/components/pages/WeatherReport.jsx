@@ -33,6 +33,8 @@ function WeatherReport() {
 
   return (
     <div className='weather-container'>
+      <img className='cloud cloud-size1' src={require("../../assets/pics/cloud.png")} alt="" />
+      <img className='cloud cloud-size2' src={require("../../assets/pics/cloud2.png")} alt="" />
       {isLoading 
         ? <Loader/>
         :  <Weather weatherInfo={ weatherInfo }/>
