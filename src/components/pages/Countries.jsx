@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { useLocations } from '../../hooks/useLocation';
 import { useFetchingExt } from '../../hooks/useFetching';
-import Loader from '../UI/Loader/Loader';
 import LocationFilter from '../LocationFilter';
+import Loader from '../UI/Loader/Loader';
 import List from '../UI/List/List';
+import Error from '../UI/Error/Error';
 import { getCountries } from "../../API/countires.api";
 
 const Countries = () => {
@@ -22,6 +23,9 @@ const Countries = () => {
 
     return (
         <div>
+            {fetchState.error &&
+                <Error error={fetchState.error}/>
+            }
             {fetchState.isLoading
                 ? <div className='loader-container'><Loader/></div>
                 : <div className='container'>

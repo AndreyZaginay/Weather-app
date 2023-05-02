@@ -5,6 +5,7 @@ import { useFetchingExt } from '../../hooks/useFetching';
 import Loader from '../UI/Loader/Loader';
 import Weather from '../Weather';
 import { getWeatherByCity } from "../../API/weather.api";
+import Error from '../UI/Error/Error';
 
 const WeatherReport = () => {
     const params = useParams();
@@ -19,6 +20,11 @@ const WeatherReport = () => {
 
     return (
         <div className='weather-container'>
+            <img src={require('../../assets/pics/cloud.png')} className='cloud cloud-size1' alt="" />
+            <img src={require('../../assets/pics/cloud2.png')} className='cloud cloud-size2' alt="" />
+            {fetchState.error && 
+                <Error error={fetchState.error}/>
+            }
             {fetchState.isLoading
                 ? <Loader/>
                 : <Weather weatherInfo={weatherInfo}/>

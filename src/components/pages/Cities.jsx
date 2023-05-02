@@ -7,6 +7,7 @@ import Loader from '../UI/Loader/Loader';
 import List from '../UI/List/List';
 import { useFetchingExt } from "../../hooks/useFetching";
 import { getCountryCities } from "../../API/countires.api";
+import Error from '../UI/Error/Error';
 
 const Cities = () => {
     const params = useParams();
@@ -21,13 +22,13 @@ const Cities = () => {
             .then(response => setCities(response.data));
     }, []);
 
-    return (
+    return ( 
         <div>
             {fetchingState.error &&
-                <h1 style={{textAlign: 'center'}}>Error: ${fetchingState.error}</h1>
+                <Error error={fetchingState.error}/>
             }
             {fetchingState.isLoading
-                ? <div className='loader-container'><Loader/></div>
+                ? <Loader/>
                 : <div className='container'>
                     <LocationFilter msg={'Enter city name'} filter={filter} setFilter={setFilter}/>
                     <List list={sortedCities} route={'/weather'}/>
