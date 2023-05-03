@@ -19,7 +19,8 @@ const Cities = () => {
 
     useEffect(() => {
         fetchCities()
-            .then(response => setCities(response.data));
+            .then(response => setCities(response.data))
+            .catch((error) => console.log(error));
     }, []);
 
     return ( 
@@ -28,11 +29,14 @@ const Cities = () => {
                 <Error error={fetchingState.error}/>
             }
             {fetchingState.isLoading
-                ? <Loader/>
-                : <div className='container'>
-                    <LocationFilter msg={'Enter city name'} filter={filter} setFilter={setFilter}/>
-                    <List list={sortedCities} route={'/weather'}/>
-                </div>
+                ?   <Loader/>
+                :   <div className='container'>
+                        {fetchingState.error
+                            ? <span style={{display: 'none'}}></span>
+                            : <div>  <LocationFilter msg={'Enter city name'} filter={filter} setFilter={setFilter}/>
+                            <List list={sortedCities} route={'/weather'}/></div>
+                        }
+                    </div>
             }
         </div>
     )
