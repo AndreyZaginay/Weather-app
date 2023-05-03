@@ -32,9 +32,11 @@ const Cities = () => {
                 ?   <Loader/>
                 :   <div className='container'>
                         {fetchingState.error
-                            ? <span style={{display: 'none'}}></span>
-                            : <div>  <LocationFilter msg={'Enter city name'} filter={filter} setFilter={setFilter}/>
-                            <List list={sortedCities} route={'/weather'}/></div>
+                            ?   <span style={{display: 'none'}}></span>
+                            :   <div>
+                                    <LocationFilter msg={'Enter city name'} filter={filter} setFilter={setFilter}/>
+                                    <List list={sortedCities} route={'/weather'}/>
+                                </div>
                         }
                     </div>
             }
