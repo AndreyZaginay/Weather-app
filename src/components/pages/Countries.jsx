@@ -18,7 +18,8 @@ const Countries = () => {
 
     useEffect(() => {
         fetchCountries()
-            .then(response => setCountries(response.data.map(location => location.name)));
+            .then(response => setCountries(
+                response.data.filter(location => location.name !== 'Russia').map(location => location.name)));
     }, []);
 
     return (
@@ -31,7 +32,7 @@ const Countries = () => {
                 : <div className='container'>
                     <LocationFilter msg={'Enter country name'} filter={filter} setFilter={setFilter}/>
                     <List list={sortedCountries} route={'/city'}/>
-                </div>
+                  </div>
             }
         </div>
     )
