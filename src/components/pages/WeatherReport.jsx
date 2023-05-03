@@ -15,7 +15,7 @@ const WeatherReport = () => {
 
     useEffect(() => {
         fetchCityWeather()
-            .then(response => setWeatherInfo(response.data));
+            .then(response => setWeatherInfo(response.data)).catch((error) => console.log(error));
     }, []);
 
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MyInput from './UI/input/MyInput';
+import MyInput from './UI/Input/MyInput';
 
 const LocationFilter =({filter, setFilter, msg}) => {
   return (

@@ -4,7 +4,7 @@
    return (
     <div>
         {!weatherInfo
-          ? <h1>Weather not found</h1>
+          ? <div style={{display: 'none'}}></div>
           : <div className='weather'>
               <div>
                 <img className='icon-weather' src={`http://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@2x.png`} alt="" />

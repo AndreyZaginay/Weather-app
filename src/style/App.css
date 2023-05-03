@@ -10,7 +10,7 @@
 
 .App {
     height: 100%;
- 
+    background: rgb(234, 255, 255);
 }
 
 .country-conteiner {
@@ -53,11 +53,9 @@
 .weather {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     justify-content: center;
@@ -86,8 +84,8 @@
 }
 
 .filter span {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
     text-align: center;
 }
 
